@@ -39,10 +39,18 @@ CREATE TABLE lab_mysql.Invoices (invoice_number INT AUTO_INCREMENT PRIMARY KEY,
 								date DATETIME,
 								car VARCHAR(50),
 								customer VARCHAR(50),
-								salesperson_sele_car VARCHAR(50));
+								salesperson_sele_car VARCHAR(50),
+								CONSTRAINT vin_ref FOREIGN KEY (vin) REFERENCES cars (vin),
+								CONSTRAINT cust_ref FOREIGN KEY (customer_id) REFERENCES customers (customer_id),
+								CONSTRAINT staff_ref FOREIGN KEY (staff_id) REFERENCES salespersons (staff_id));
 
 
 
 
+DROP TABLE IF EXISTS lab_mysql.Salespersons_cars;
+CREATE TABLE lab_mysql.Salespersons_cars (sale_staff_ID INT AUTO_INCREMENT PRIMARY KEY,
+											staff_ID INT,
+                                            VIN VARCHAR(50));
+	
 
 
